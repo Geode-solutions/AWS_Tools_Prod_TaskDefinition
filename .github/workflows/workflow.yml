@@ -39,9 +39,9 @@ jobs:
 
     - name: Compile JSON file
       run: |
-        jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json
-        jq '.containerDefinitions[].logConfiguration[].options.awslogs-group="${{inputs.logs}}"' TaskDefinition.json
-        jq '.containerDefinitions[].family="${{inputs.task}}"' TaskDefinition.json
+        jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json > TaskDefinition.json 
+        jq '.containerDefinitions[].logConfiguration.options.awslogs-group="${{inputs.logs}}"' TaskDefinition.json > TaskDefinition.json 
+        jq '.containerDefinitions[].family="${{inputs.task}}"' TaskDefinition.json > TaskDefinition.json 
 
     - name: Deploy to Amazon ECS service
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
