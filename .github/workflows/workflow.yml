@@ -39,11 +39,11 @@ jobs:
 
     - name: Compile JSON file
       run: |
-        jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json > TaskDefinition.json
+        jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
-        jq '.containerDefinitions[].logConfiguration.options."awslogs-group"="${{inputs.logs}}"' TaskDefinition.json > TaskDefinition.json 
+        jq '.containerDefinitions[].logConfiguration.options."awslogs-group"="${{inputs.logs}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
-        jq '.containerDefinitions[].family="${{inputs.task}}"' TaskDefinition.json > TaskDefinition.json 
+        jq '.containerDefinitions[].family="${{inputs.task}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
 
     - name: Deploy to Amazon ECS service
