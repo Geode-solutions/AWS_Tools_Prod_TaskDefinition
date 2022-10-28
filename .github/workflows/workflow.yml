@@ -43,7 +43,7 @@ jobs:
         cat TaskDefinition.json
         jq '.containerDefinitions[].logConfiguration.options."awslogs-group"="${{inputs.logs}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
-        jq '.containerDefinitions[].family="${{inputs.task}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
+        jq '.family="${{inputs.task}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
 
     - name: Deploy to Amazon ECS service
