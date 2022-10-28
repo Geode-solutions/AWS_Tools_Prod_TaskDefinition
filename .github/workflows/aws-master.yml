@@ -1,0 +1,16 @@
+name: Deploy Master to Amazon ECS
+
+on:
+  push:
+    branches: master
+
+jobs:
+  deploy:
+    name: Deploy
+    uses: ./.github/workflows/workflow.yml
+    with:
+      image: 'ghcr.io/geode-solutions/geode-backend:master'
+      logs: '/ecs/TD_Tools_Prod'
+      task: 'TD_Tools_Prod'
+      cluster: 'C_Tools_Prod'
+    secrets: inherit
