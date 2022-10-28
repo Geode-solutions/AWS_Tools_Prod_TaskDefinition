@@ -1,0 +1,43 @@
+name: Deploy to Amazon ECS
+
+on:
+  push:
+    branches: [ master, develop ] 
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Compile JSON file
+      if: github.ref == 'refs/heads/master'
+        IMAGE: 'ghcr.io/geode-solutions/geode-backend:master'
+        AWS_LOGS_GROUP: '/ecs/TD_Tools_Prod'
+        TASK_FAMILY: 'TD_Tools_Prod'
+        CLUSTER_NAME: 'C_Tools_Prod'
+      if: github.ref == 'refs/heads/develop'
+        IMAGE: 'ghcr.io/geode-solutions/geode-backend:develop'
+        AWS_LOGS_GROUP: '/ecs/TD_Tools_Dev'
+        TASK_FAMILY: 'TD_Tools_Dev'
+        CLUSTER_NAME: 'C_Tools_Dev'
+      run: |
+        jq '.containerDefinitions[].image="{{IMAGE}}"' TaskDefinition.json
+        jq '.containerDefinitions[].logConfiguration[].options.awslogs-group="{{AWS_LOGS_GROUP}}"' TaskDefinition.json
+        jq '.family="{{TASK_FAMILY}}"' TaskDefinition.json
+        
+    - name: Deploy to Amazon ECS service
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: TaskDefinition.json
+        cluster: "{{CLUSTER_NAME}}"
