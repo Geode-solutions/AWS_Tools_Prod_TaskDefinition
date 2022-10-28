@@ -40,9 +40,7 @@ jobs:
     - name: Compile JSON file
       run: |
         jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
-        cat TaskDefinition.json
         jq '.containerDefinitions[].logConfiguration.options."awslogs-group"="${{inputs.logs}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
-        cat TaskDefinition.json
         jq '.family="${{inputs.task}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
 
