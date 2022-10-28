@@ -22,20 +22,20 @@ jobs:
 
     - name: Compile JSON file
       if: github.ref == 'refs/heads/master'
-        IMAGE: 'ghcr.io/geode-solutions/geode-backend:master'
-        AWS_LOGS_GROUP: '/ecs/TD_Tools_Prod'
-        TASK_FAMILY: 'TD_Tools_Prod'
-        CLUSTER_NAME: 'C_Tools_Prod'
+      IMAGE: 'ghcr.io/geode-solutions/geode-backend:master'
+      AWS_LOGS_GROUP: '/ecs/TD_Tools_Prod'
+      TASK_FAMILY: 'TD_Tools_Prod'
+      CLUSTER_NAME: 'C_Tools_Prod'
       if: github.ref == 'refs/heads/develop'
-        IMAGE: 'ghcr.io/geode-solutions/geode-backend:develop'
-        AWS_LOGS_GROUP: '/ecs/TD_Tools_Dev'
-        TASK_FAMILY: 'TD_Tools_Dev'
-        CLUSTER_NAME: 'C_Tools_Dev'
+      IMAGE: 'ghcr.io/geode-solutions/geode-backend:develop'
+      AWS_LOGS_GROUP: '/ecs/TD_Tools_Dev'
+      TASK_FAMILY: 'TD_Tools_Dev'
+      CLUSTER_NAME: 'C_Tools_Dev'
       run: |
         jq '.containerDefinitions[].image="{{IMAGE}}"' TaskDefinition.json
         jq '.containerDefinitions[].logConfiguration[].options.awslogs-group="{{AWS_LOGS_GROUP}}"' TaskDefinition.json
         jq '.family="{{TASK_FAMILY}}"' TaskDefinition.json
-        
+
     - name: Deploy to Amazon ECS service
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
