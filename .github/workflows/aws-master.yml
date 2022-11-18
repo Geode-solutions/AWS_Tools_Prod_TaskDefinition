@@ -13,4 +13,6 @@ jobs:
       logs: '/ecs/TD_Tools_Prod'
       task: 'TD_Tools_Prod'
       cluster: 'C_Tools_Prod'
+      memory: '2048'
+      cpu: '1024'
     secrets: inherit

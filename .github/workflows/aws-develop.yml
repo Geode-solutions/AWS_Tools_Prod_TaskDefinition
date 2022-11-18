@@ -13,4 +13,6 @@ jobs:
       logs: '/ecs/TD_Tools_Dev'
       task: 'TD_Tools_Dev'
       cluster: 'C_Tools_Dev'
+      memory: '2048'
+      cpu: '1024'
     secrets: inherit

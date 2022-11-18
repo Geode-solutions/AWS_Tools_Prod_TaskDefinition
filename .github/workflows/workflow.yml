@@ -13,6 +13,12 @@ on:
       cluster:
         type: string
         required: true
+      memory:
+        type: string
+        required: true
+      cpu:
+        type: string
+        required: true
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
@@ -42,6 +48,8 @@ jobs:
         jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         jq '.containerDefinitions[].logConfiguration.options."awslogs-group"="${{inputs.logs}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         jq '.family="${{inputs.task}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
+        jq '.memory="${{inputs.memory}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
+        jq '.cpu="${{inputs.cpu}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
 
     - name: Deploy to Amazon ECS service
