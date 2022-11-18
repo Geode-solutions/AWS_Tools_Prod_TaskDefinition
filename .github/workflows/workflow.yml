@@ -13,6 +13,12 @@ on:
       cluster:
         type: string
         required: true
+      memory:
+        type: string
+        required: true
+      cpu:
+        type: string
+        required: true
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
@@ -31,7 +37,7 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@v1-node16
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -42,10 +48,12 @@ jobs:
         jq '.containerDefinitions[].image="${{inputs.image}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         jq '.containerDefinitions[].logConfiguration.options."awslogs-group"="${{inputs.logs}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         jq '.family="${{inputs.task}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
+        jq '.memory="${{inputs.memory}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
+        jq '.cpu="${{inputs.cpu}}"' TaskDefinition.json > temp && mv temp TaskDefinition.json
         cat TaskDefinition.json
 
     - name: Deploy to Amazon ECS service
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: TaskDefinition.json
-        cluster: "${{inputs.clsuter}}"
+        cluster: "${{inputs.cluster}}"
