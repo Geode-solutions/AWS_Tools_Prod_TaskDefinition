@@ -3,19 +3,18 @@
     {
       "name": "ToolsContainer",
       "image": "",
-      "cpu": 0,
       "memoryReservation": 1000,
       "portMappings": [
         {
-          "containerPort": 5000,
-          "hostPort": 5000,
+          "containerPort": 443,
+          "hostPort": 443,
           "protocol": "tcp"
         }
       ],
       "environment": [
         {
-          "name": "FLASK_ENV",
-          "value": "production"
+          "name": "FLASK_DEBUG",
+          "value": false
         }
       ],
       "essential": true,
