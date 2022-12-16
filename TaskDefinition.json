@@ -14,7 +14,7 @@
       "environment": [
         {
           "name": "FLASK_DEBUG",
-          "value": false
+          "value": "False"
         }
       ],
       "essential": true,
