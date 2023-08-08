@@ -3,6 +3,9 @@
     {
       "name": "ToolsContainer",
       "image": "",
+      "repositoryCredentials": {
+        "credentialsParameter": "arn:aws:secretsmanager:eu-west-3:622060531233:secret:GHCR_CREDENTIALS-8FVTJs"
+      },
       "memoryReservation": 1000,
       "portMappings": [
         {
