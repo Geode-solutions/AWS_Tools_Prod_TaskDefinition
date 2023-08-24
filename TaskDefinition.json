@@ -3,7 +3,7 @@
   "containerDefinitions": [
       {
           "name": "router",
-          "image": "ghcr.io/geode-solutions/sharetwin_router:develop",
+          "image": "",
           "cpu": 256,
           "memory": 256,
           "portMappings": [
@@ -21,7 +21,7 @@
               "logDriver": "awslogs",
               "options": {
                   "awslogs-create-group": "true",
-                  "awslogs-group": "/ecs/TD_ShareTwin_Dev/router/",
+                  "awslogs-group": "",
                   "awslogs-region": "eu-west-3",
                   "awslogs-stream-prefix": "ecs"
               }
@@ -29,7 +29,7 @@
       },
       {
           "name": "viewer",
-          "image": "ghcr.io/geode-solutions/opengeodeweb_viewer:next",
+          "image": "",
           "cpu": 0,
           "portMappings": [],
           "essential": true,
@@ -45,7 +45,7 @@
               "logDriver": "awslogs",
               "options": {
                   "awslogs-create-group": "true",
-                  "awslogs-group": "/ecs/TD_Tools_Dev/viewer/",
+                  "awslogs-group": "",
                   "awslogs-region": "eu-west-3",
                   "awslogs-stream-prefix": "ecs"
               }
@@ -53,7 +53,7 @@
       },
       {
           "name": "geode",
-          "image": "ghcr.io/geode-solutions/geode_backend:develop",
+          "image": "",
           "cpu": 0,
           "portMappings": [],
           "essential": true,
@@ -74,14 +74,14 @@
               "logDriver": "awslogs",
               "options": {
                   "awslogs-create-group": "true",
-                  "awslogs-group": "/ecs/TD_Tools_Dev/geode/",
+                  "awslogs-group": "",
                   "awslogs-region": "eu-west-3",
                   "awslogs-stream-prefix": "ecs"
               }
           }
       }
   ],
-  "family": "TD_Tools_Dev",
+  "family": "",
   "taskRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "executionRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
@@ -124,8 +124,8 @@
   "requiresCompatibilities": [
       "FARGATE"
   ],
-  "cpu": "2048",
-  "memory": "4096",
+  "cpu": "",
+  "memory": "",
   "registeredAt": "2023-04-04T14:18:41.229Z",
   "registeredBy": "arn:aws:iam::622060531233:user/arnaud.botella",
   "tags": []
