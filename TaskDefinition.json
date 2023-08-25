@@ -1,85 +1,88 @@
 {
   "taskDefinitionArn": "arn:aws:ecs:eu-west-3:622060531233:task-definition/TD_Workflows:35",
   "containerDefinitions": [
-      {
-          "name": "router",
-          "image": "",
-          "cpu": 256,
-          "memory": 256,
-          "portMappings": [
-              {
-                  "containerPort": 443,
-                  "hostPort": 443,
-                  "protocol": "tcp"
-              }
-          ],
-          "essential": true,
-          "environment": [],
-          "mountPoints": [],
-          "volumesFrom": [],
-          "logConfiguration": {
-              "logDriver": "awslogs",
-              "options": {
-                  "awslogs-create-group": "true",
-                  "awslogs-group": "",
-                  "awslogs-region": "eu-west-3",
-                  "awslogs-stream-prefix": "ecs"
-              }
-          }
-      },
-      {
-          "name": "viewer",
-          "image": "",
-          "cpu": 0,
-          "portMappings": [],
-          "essential": true,
-          "environment": [],
-          "mountPoints": [
-              {
-                  "sourceVolume": "data",
-                  "containerPath": "/data"
-              }
-          ],
-          "volumesFrom": [],
-          "logConfiguration": {
-              "logDriver": "awslogs",
-              "options": {
-                  "awslogs-create-group": "true",
-                  "awslogs-group": "",
-                  "awslogs-region": "eu-west-3",
-                  "awslogs-stream-prefix": "ecs"
-              }
-          }
-      },
-      {
-          "name": "geode",
-          "image": "",
-          "cpu": 0,
-          "portMappings": [],
-          "essential": true,
-          "environment": [
-              {
-                  "name": "FLASK_DEBUG",
-                  "value": "False"
-              }
-          ],
-          "mountPoints": [
-              {
-                  "sourceVolume": "data",
-                  "containerPath": "/data"
-              }
-          ],
-          "volumesFrom": [],
-          "logConfiguration": {
-              "logDriver": "awslogs",
-              "options": {
-                  "awslogs-create-group": "true",
-                  "awslogs-group": "",
-                  "awslogs-region": "eu-west-3",
-                  "awslogs-stream-prefix": "ecs"
-              }
-          }
+    {
+      "name": "router",
+      "image": "",
+      "cpu": 256,
+      "memory": 256,
+      "portMappings": [
+        {
+          "containerPort": 443,
+          "hostPort": 443,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "",
+          "awslogs-region": "eu-west-3",
+          "awslogs-stream-prefix": "ecs"
+        }
       }
+    },
+    {
+      "name": "viewer",
+      "image": "",
+      "cpu": 0,
+      "portMappings": [],
+      "essential": true,
+      "environment": [],
+      "mountPoints": [
+        {
+          "sourceVolume": "data",
+          "containerPath": "/data"
+        }
+      ],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "",
+          "awslogs-region": "eu-west-3",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    },
+    {
+      "name": "geode",
+      "image": "",
+      "repositoryCredentials": {
+        "credentialsParameter": "arn:aws:secretsmanager:eu-west-3:622060531233:secret:GHCR_CREDENTIALS-8FVTJs"
+      },
+      "cpu": 0,
+      "portMappings": [],
+      "essential": true,
+      "environment": [
+        {
+          "name": "FLASK_DEBUG",
+          "value": "False"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "data",
+          "containerPath": "/data"
+        }
+      ],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "",
+          "awslogs-region": "eu-west-3",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
   ],
   "family": "",
   "taskRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
@@ -87,42 +90,42 @@
   "networkMode": "awsvpc",
   "revision": 35,
   "volumes": [
-      {
-          "name": "data",
-          "host": {}
-      }
+    {
+      "name": "data",
+      "host": {}
+    }
   ],
   "status": "ACTIVE",
   "requiresAttributes": [
-      {
-          "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-      },
-      {
-          "name": "ecs.capability.execution-role-awslogs"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.task-iam-role"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-      },
-      {
-          "name": "ecs.capability.task-eni"
-      },
-      {
-          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
-      }
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
   ],
   "placementConstraints": [],
   "compatibilities": [
-      "EC2",
-      "FARGATE"
+    "EC2",
+    "FARGATE"
   ],
   "requiresCompatibilities": [
-      "FARGATE"
+    "FARGATE"
   ],
   "cpu": "",
   "memory": "",
