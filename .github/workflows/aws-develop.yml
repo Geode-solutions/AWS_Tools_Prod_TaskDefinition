@@ -13,7 +13,7 @@ jobs:
       router_logs: '/ecs/TD_Tools_Dev/router/'
       viewer_image: 'ghcr.io/geode-solutions/opengeodeweb_viewer:next'
       viewer_logs: '/ecs/TD_Tools_Dev/viewer/'
-      geode_image: 'ghcr.io/geode-solutions/geode_backend:develop'
+      geode_image: 'ghcr.io/geode-solutions/geode-backend:develop'
       geode_logs: '/ecs/TD_Tools_Dev/geode/'
       task: 'TD_Tools_Dev'
       cluster: 'C_Tools_Dev'
