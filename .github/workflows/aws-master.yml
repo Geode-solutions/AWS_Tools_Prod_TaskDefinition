@@ -10,7 +10,7 @@ jobs:
     uses: ./.github/workflows/workflow.yml
     with:
       router_image: 'ghcr.io/geode-solutions/sharetwin_router:master'
-      router_logs: '/ecs/TD_ShareTwin_Dev/router/'
+      router_logs: '/ecs/TD_Tools_Prod/router/'
       viewer_image: 'ghcr.io/geode-solutions/opengeodeweb_viewer:master'
       viewer_logs: '/ecs/TD_Tools_Prod/viewer/'
       geode_image: 'ghcr.io/geode-solutions/geode_backend:master'
