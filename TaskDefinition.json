@@ -1,5 +1,4 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:eu-west-3:622060531233:task-definition/TD_Workflows:35",
   "containerDefinitions": [
     {
       "name": "router",
@@ -88,48 +87,15 @@
   "taskRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "executionRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
-  "revision": 35,
   "volumes": [
     {
       "name": "data",
       "host": {}
     }
   ],
-  "status": "ACTIVE",
-  "requiresAttributes": [
-    {
-      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-    },
-    {
-      "name": "ecs.capability.execution-role-awslogs"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.task-iam-role"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-    },
-    {
-      "name": "ecs.capability.task-eni"
-    },
-    {
-      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
-    }
-  ],
-  "placementConstraints": [],
-  "compatibilities": [
-    "EC2",
-    "FARGATE"
-  ],
   "requiresCompatibilities": [
     "FARGATE"
   ],
   "cpu": "",
-  "memory": "",
-  "registeredAt": "2023-04-04T14:18:41.229Z",
-  "registeredBy": "arn:aws:iam::622060531233:user/arnaud.botella",
-  "tags": []
+  "memory": ""
 }

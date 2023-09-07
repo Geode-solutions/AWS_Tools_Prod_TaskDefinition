@@ -9,7 +9,7 @@ jobs:
     name: Deploy
     uses: ./.github/workflows/workflow.yml
     with:
-      router_image: 'ghcr.io/geode-solutions/sharetwin_router:master'
+      router_image: 'ghcr.io/geode-solutions/opengeodeweb_router:master'
       router_logs: '/ecs/TD_Tools_Prod/router/'
       viewer_image: 'ghcr.io/geode-solutions/opengeodeweb_viewer:master'
       viewer_logs: '/ecs/TD_Tools_Prod/viewer/'
