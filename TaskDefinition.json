@@ -2,7 +2,7 @@
   "containerDefinitions": [
     {
       "name": "router",
-      "image": "",
+      "image": "TO_COMPLETE",
       "cpu": 256,
       "memory": 256,
       "portMappings": [
@@ -13,14 +13,11 @@
         }
       ],
       "essential": true,
-      "environment": [],
-      "mountPoints": [],
-      "volumesFrom": [],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
           "awslogs-create-group": "true",
-          "awslogs-group": "",
+          "awslogs-group": "TO_COMPLETE",
           "awslogs-region": "eu-west-3",
           "awslogs-stream-prefix": "ecs"
         }
@@ -28,23 +25,20 @@
     },
     {
       "name": "viewer",
-      "image": "",
+      "image": "TO_COMPLETE",
       "cpu": 0,
-      "portMappings": [],
       "essential": true,
-      "environment": [],
       "mountPoints": [
         {
           "sourceVolume": "data",
           "containerPath": "/data"
         }
       ],
-      "volumesFrom": [],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
           "awslogs-create-group": "true",
-          "awslogs-group": "",
+          "awslogs-group": "TO_COMPLETE",
           "awslogs-region": "eu-west-3",
           "awslogs-stream-prefix": "ecs"
         }
@@ -52,12 +46,11 @@
     },
     {
       "name": "geode",
-      "image": "",
+      "image": "TO_COMPLETE",
       "repositoryCredentials": {
         "credentialsParameter": "arn:aws:secretsmanager:eu-west-3:622060531233:secret:GHCR_CREDENTIALS-8FVTJs"
       },
       "cpu": 0,
-      "portMappings": [],
       "essential": true,
       "environment": [
         {
@@ -71,19 +64,18 @@
           "containerPath": "/data"
         }
       ],
-      "volumesFrom": [],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
           "awslogs-create-group": "true",
-          "awslogs-group": "",
+          "awslogs-group": "TO_COMPLETE",
           "awslogs-region": "eu-west-3",
           "awslogs-stream-prefix": "ecs"
         }
       }
     }
   ],
-  "family": "",
+  "family": "TO_COMPLETE",
   "taskRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "executionRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
@@ -96,6 +88,6 @@
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "cpu": "",
-  "memory": ""
+  "cpu": "TO_COMPLETE",
+  "memory": "TO_COMPLETE"
 }
