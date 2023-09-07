@@ -1,12 +1,10 @@
 {
   "containerDefinitions": [
     {
-      "name": "ToolsContainer",
-      "image": "",
-      "repositoryCredentials": {
-        "credentialsParameter": "arn:aws:secretsmanager:eu-west-3:622060531233:secret:GHCR_CREDENTIALS-8FVTJs"
-      },
-      "memoryReservation": 1000,
+      "name": "router",
+      "image": "TO_COMPLETE",
+      "cpu": 256,
+      "memory": 256,
       "portMappings": [
         {
           "containerPort": 443,
@@ -14,30 +12,82 @@
           "protocol": "tcp"
         }
       ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "TO_COMPLETE",
+          "awslogs-region": "eu-west-3",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    },
+    {
+      "name": "viewer",
+      "image": "TO_COMPLETE",
+      "cpu": 0,
+      "essential": true,
+      "mountPoints": [
+        {
+          "sourceVolume": "data",
+          "containerPath": "/data"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "TO_COMPLETE",
+          "awslogs-region": "eu-west-3",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    },
+    {
+      "name": "geode",
+      "image": "TO_COMPLETE",
+      "repositoryCredentials": {
+        "credentialsParameter": "arn:aws:secretsmanager:eu-west-3:622060531233:secret:GHCR_CREDENTIALS-8FVTJs"
+      },
+      "cpu": 0,
+      "essential": true,
       "environment": [
         {
           "name": "FLASK_DEBUG",
           "value": "False"
         }
       ],
-      "essential": true,
+      "mountPoints": [
+        {
+          "sourceVolume": "data",
+          "containerPath": "/data"
+        }
+      ],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "",
+          "awslogs-create-group": "true",
+          "awslogs-group": "TO_COMPLETE",
           "awslogs-region": "eu-west-3",
           "awslogs-stream-prefix": "ecs"
         }
       }
     }
   ],
-  "family": "",
+  "family": "TO_COMPLETE",
   "taskRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "executionRoleArn": "arn:aws:iam::622060531233:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
+  "volumes": [
+    {
+      "name": "data",
+      "host": {}
+    }
+  ],
   "requiresCompatibilities": [
     "FARGATE"
   ],
-  "cpu": "",
-  "memory": ""
+  "cpu": "TO_COMPLETE",
+  "memory": "TO_COMPLETE"
 }
