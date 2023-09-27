@@ -1,0 +1,22 @@
+name: Deploy Next to Amazon ECS
+
+on:
+  push:
+    branches: next
+
+jobs:
+  deploy:
+    name: Deploy
+    uses: ./.github/workflows/workflow.yml
+    with:
+      router_image: 'ghcr.io/geode-solutions/opengeodeweb-router:next'
+      router_logs: '/ecs/Website-Next/router/'
+      viewer_image: 'ghcr.io/geode-solutions/opengeodeweb-viewer:next'
+      viewer_logs: '/ecs/Website-Next/viewer/'
+      geode_image: 'ghcr.io/geode-solutions/website-back:next'
+      geode_logs: '/ecs/Website-Next/geode/'
+      task: 'Website-Next'
+      cluster: 'Website-Next'
+      memory: '2048'
+      cpu: '1024'
+    secrets: inherit
