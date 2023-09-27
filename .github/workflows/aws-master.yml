@@ -9,14 +9,14 @@ jobs:
     name: Deploy
     uses: ./.github/workflows/workflow.yml
     with:
-      router_image: 'ghcr.io/geode-solutions/opengeodeweb_router:master'
-      router_logs: '/ecs/TD_Tools_Prod/router/'
-      viewer_image: 'ghcr.io/geode-solutions/opengeodeweb_viewer:master'
-      viewer_logs: '/ecs/TD_Tools_Prod/viewer/'
-      geode_image: 'ghcr.io/geode-solutions/geode-backend:master'
-      geode_logs: '/ecs/TD_Tools_Prod/geode/'
-      task: 'TD_Tools_Prod'
-      cluster: 'C_Tools_Prod'
+      router_image: 'ghcr.io/geode-solutions/opengeodeweb-router:master'
+      router_logs: '/ecs/Website-Master/router/'
+      viewer_image: 'ghcr.io/geode-solutions/opengeodeweb-viewer:master'
+      viewer_logs: '/ecs/Website-Master/viewer/'
+      geode_image: 'ghcr.io/geode-solutions/website-back:master'
+      geode_logs: '/ecs/Website-Master/geode/'
+      task: 'Website-Master'
+      cluster: 'Website-Master'
       memory: '2048'
       cpu: '1024'
     secrets: inherit
