@@ -15,7 +15,7 @@ jobs:
       viewer_logs: "/ecs/Website-Next/viewer/"
       geode_image: "ghcr.io/geode-solutions/website-back:next"
       geode_logs: "/ecs/Website-Next/geode/"
-      task: "Website-Next"
+      task: "fix-lot-of-things"
       cluster: "Website-Next"
       memory: "2048"
       cpu: "1024"
